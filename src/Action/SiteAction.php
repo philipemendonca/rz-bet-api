@@ -5,15 +5,14 @@ namespace App\Action;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class HomeAction
+final class SiteAction
 {
     public function __invoke(
         ServerRequestInterface $request,
         ResponseInterface $response
     ): ResponseInterface {
-        $response->getBody()->write(json_encode(['success' => true]));
+        $response->getBody()->write('<h1>RZ Bet-API</h1>');
 
-        return $response->withHeader('Content-Type', 'application/json')
-            ->withStatus(200);
+        return $response;
     }
 }

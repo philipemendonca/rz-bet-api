@@ -28,3 +28,8 @@ putenv('MYSQL_PASSWORD=');
  * Configuração da chave de tokens
  */
 putenv('JWT_SECRET_KEY=');
+
+/**
+ * Link com os dados sobre a seção 
+ */
+putenv('SESSION_LINK=http://localhost:5000/bet365');
