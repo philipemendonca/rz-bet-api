@@ -41,7 +41,7 @@ final class OddsGet
      */
     public function getOdds(): array
     {
-        $liga = 'G10038752x';
+        $liga = 'G100387529';
         $odds = [];
         $odds_to_merge = [];
 

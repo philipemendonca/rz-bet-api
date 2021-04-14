@@ -2,39 +2,40 @@
 
 namespace App\Action;
 
-use App\Domain\User\Service\UserCreator;
+use App\Domain\User\Service\UserCreate;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class UserCreateAction
+final class UserGetAction
 {
-    private $userCreator;
+    private $userCreate;
 
-    public function __construct(UserCreator $userCreator)
+    public function __construct(UserCreate $userCreate)
     {
-        $this->userCreator = $userCreator;
+        $this->userCreate = $userCreate;
     }
 
-    public function __invoke(
-        ServerRequestInterface $request, 
-        ResponseInterface $response
-    ): ResponseInterface {
-        // Collect input from the HTTP request
-        $data = (array)$request->getParsedBody();
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
+    {
+        $data = [];
+        $status = 0;
 
-        // Invoke the Domain with inputs and retain the result
-        $userId = $this->userCreator->createUser($data);
+        try {
+            $data = (array)$request->getParsedBody();
+            $userId = $this->userCreate->createUser($data);
+            $result = [
+                'user_id' => $userId
+            ];
+            $status = 201;
+        } catch (\Throwable $th) {
+            $result = [
+                'message' => $th->getMessage()
+            ];
+            $status = $th->getCode();
+        }
 
-        // Transform the result into the JSON representation
-        $result = [
-            'user_id' => $userId
-        ];
-
-        // Build the HTTP response
         $response->getBody()->write((string)json_encode($result));
 
-        return $response
-            ->withHeader('Content-Type', 'application/json')
-            ->withStatus(201);
+        return $response->withHeader('Content-Type', 'application/json')->withStatus($status);
     }
 }

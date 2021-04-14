@@ -7,7 +7,7 @@ use PDO;
 /**
  * Repository.
  */
-class UserCreatorRepository
+class UserCreateRepository
 {
     /**
      * @var PDO The database connection
