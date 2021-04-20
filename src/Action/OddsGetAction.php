@@ -15,10 +15,8 @@ final class OddsGetAction
         $this->OddsGet = $OddsGet;
     }
 
-    public function __invoke(
-        ServerRequestInterface $request,
-        ResponseInterface $response
-    ): ResponseInterface {
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
+    {
         // Recebe os dados
         $Odds = $this->OddsGet->getOdds();
 

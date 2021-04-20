@@ -30,10 +30,7 @@ final class LoginAction
 
         try {
             $user = $this->userRepository->getUserByEmailPassword((array)$request->getParsedBody());
-            $token = $this->tokenService->createToken($user);
-            //$refreshToken = $this->tokenService->createRefreshToken('email');
-
-
+            $data = $this->tokenService->createToken($user);
             $status = 200;
         } catch (\Throwable $th) {
             $data = ['message' => $th->getMessage()];

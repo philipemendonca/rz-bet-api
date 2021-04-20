@@ -13,19 +13,31 @@ class UserGetRepository
         $this->connection = $connection;
     }
 
-    public function getUserByEmailPassword(array $data): ?array
+    public function getUserByEmail(array $data): ?array
     {
+        $email = $data['email'];
         $sql = $this->connection->prepare("SELECT * FROM sis_usuarios_api WHERE email = :email");
-        $sql->bindParam('email', $data['email']);
+        $sql->bindParam('email', $email);
         $sql->execute();
-        $user = $sql->fetch(\PDO::FETCH_ASSOC);
 
-        if ($user && password_verify($data['senha'], $user['senha'])) {
-            return $user;
+        return $sql->fetch(\PDO::FETCH_ASSOC);
+    }
+
+    public function checkEmailSenha(string $senha, string $hash): bool
+    {
+        if (password_verify($senha, $hash)) {
+            return true;
+        }else{
+            return false;
         }
-        
-        throw new \Exception('dados inválidos', 401);
- 
-        return null;
+    }
+
+    public function getUserById(int $Id): ?array
+    {
+        $sql = $this->connection->prepare("SELECT * FROM sis_usuarios_api WHERE id = :id");
+        $sql->bindParam('id', $Id);
+        $sql->execute();
+
+        return $sql->fetch(\PDO::FETCH_ASSOC);
     }
 }
