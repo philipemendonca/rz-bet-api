@@ -5,9 +5,9 @@ use App\Action\JwtAuthAction;
 use function App\Domain\Auth\Service\jwtAuth;
 
 return function (App $app) {
-    $app->get('/', \App\Action\SiteAction::class)
-        ->add((new JwtAuthAction()))
-        ->add(jwtAuth());
+    $app->get('/', \App\Action\SiteAction::class);
+        //->add((new JwtAuthAction()))
+        //->add(jwtAuth());
 
     //$app->post('/users', \App\Action\UserCreateAction::class);
 
@@ -17,7 +17,7 @@ return function (App $app) {
 
     $app->post('/refresh-token', \App\Action\TokenRefreshAction::class);
 
-    $app->get('/odds', \App\Action\OddsGetAction::class)
-        ->add((new JwtAuthAction()))
-        ->add(jwtAuth());
+    $app->get('/odds', \App\Action\OddsGetAction::class);
+        //->add((new JwtAuthAction()))
+        //->add(jwtAuth());
 };

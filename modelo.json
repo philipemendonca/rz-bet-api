@@ -1,0 +1,35 @@
+{
+    "result": 1,
+    "jogos": {
+        "jogo_1": {
+            "campeonato": "Brasileirão",
+            "timecasa": "Sport",
+            "timecasaimg": "http://localhost/BetPlataform/public_html/cdn/img/25/25/crop/100/default.jpg",
+            "timeforaimg": "http://localhost/BetPlataform/public_html/cdn/img/25/25/crop/100/default.jpg",
+            "timefora": "Santa Cruz",
+            "refid": "ref-Id",
+            "data": "25/10/2021",
+            "hora": "14:30",
+            "cotacoes": {
+                "90": {
+                    "casa": 2.160275,
+                    "empate": 2.1675,
+                    "fora": 1.770125
+                },
+                "pt": {
+                    "casa": 1.80625,
+                    "empate": 1.1271,
+                    "fora": 2.0229999999999997
+                },
+                "st": {
+                    "casa": 1.60395,
+                    "empate": 1.3149499999999998,
+                    "fora": 1.7918
+                }
+            }
+        }
+    },
+    "campeonatos": {
+        "campeonato_1": "Brasileirão"
+    }
+}

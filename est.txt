@@ -1,0 +1,5 @@
+japao      BC=2021 04 24 060000;LI=1502-1; local = 02:00
+brasil     BC=2021 04 22 000000;LI=1502-1; local = 20:00
+togo       BC=2021 04 22 160000;LI=1502-1; local = 12:00
+
+fuzo = -4 horas

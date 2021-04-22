@@ -17,19 +17,24 @@ final class OddsGetAction
 
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        // Recebe os dados
-        $Odds = $this->OddsGet->getOdds();
+        $status = 200;
+        try {
+            $Odds = $this->OddsGet->getOdds();
+            $result = [
+                'result' => 1,
+                'jogos' => $Odds['jogos'],
+                'campeonatos' => $Odds['campeonatos']
+            ];
+        } catch (\Throwable $th) {
+            $result = [
+                'result' => 0,
+                'message' => $th->getMessage()
+            ];
+            $status = $th->getCode();
+        }
 
-        // Cria a resposta HTTP
-        $response->getBody()->write((string) json_encode(
-            count($Odds) == 0 ? [
-                'message' => 'problema ao baixar dados do bet365'
-            ] : $Odds
-        ));
+        $response->getBody()->write((string)json_encode($result));
 
-        // Envia a resposta
-        return $response
-            ->withHeader('Content-Type', 'application/json')
-            ->withStatus(200);
+        return $response->withHeader('Content-Type', 'application/json')->withStatus($status);
     }
 }
