@@ -37,10 +37,8 @@ git clone git@github.com:philipemendonca/rz-bet-api.git /var/www/html
 # Apache 2
 #
 sudo apt-get install apache2
-```
-- Remover listagem de diretórios do Apache
-- Editar os arquivos abaixo: 000-default.conf, e dicionar a string : Options -Indexes
-```shell
+# Remover listagem de diretórios do Apache
+# Editar os arquivos abaixo: 000-default.conf, e dicionar a string : Options -Indexes
 sudo nano /etc/apache2/sites-available/000-default.conf
 sudo nano /etc/apache2/sites-enabled/000-default.conf
 #
@@ -87,23 +85,22 @@ exit
 sudo cp phpmyadmin.conf /etc/apache2/conf-available/phpmyadmin.conf
 sudo a2enconf phpmyadmin.conf
 sudo service apache2 restart
-```
+#
 # Configurações do apache
-```shell
+#
 sudo a2enmod rewrite
 # Mover o arquivo: 000-default.conf, que esta na raiz do projeto
 sudo mv 000-default.conf /etc/apache2/sites-enabled/000-default.conf
 sudo service apache2 restart
 # Habilitar todas as extenções do php
 sudo nano /etc/php/7.*/apache2/php.ini
-```
+#
 # Permissões ao projeto
-```shell
+#
 sudo chmod 777 /var/www/html/rz-bet-api/ -R
-```
-
+#
 # Baixar dependencias do projeto (Composer)
-```shell
+#
 cd /var/www/html/rz-bet-api/
 # Para desenvolvimento
 composer install
@@ -111,10 +108,9 @@ composer update
 # Para produção
 composer install --no-dev --optimize-autoloader
 composer update --no-dev --optimize-autoloader
-```
-
+#
 # Baixar dependencias do projeto (NPM)
-```shell
+#
 cd /var/www/html/rz-bet-api/
 # Para desenvolvimento
 npm install
