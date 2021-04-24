@@ -4,9 +4,7 @@ use DI\ContainerBuilder;
 use Slim\App;
 
 require_once '../env.php';
-require_once '../src/Domain/Auth/Service/AuthService.php';
 require_once __DIR__ . '/../vendor/autoload.php';
-
 
 $containerBuilder = new ContainerBuilder();
 

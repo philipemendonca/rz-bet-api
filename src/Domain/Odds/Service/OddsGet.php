@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Domain\Odds\Service;
 
 use App\Exception\GetOddsException;
@@ -42,7 +43,7 @@ final class OddsGet
      */
     public function getOdds(): array
     {
-        $ligas = array('G101666424', 'G101499652');
+        $ligas = array('G101284889', 'G101334640', 'G101751187');
         $mercados = [];
         $odds['jogos'] = [];
         $odds['campeonatos'] = [];

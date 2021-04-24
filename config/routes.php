@@ -7,7 +7,10 @@ return function (App $app) {
 
     $app->get('/odds', \App\Action\OddsGetAction::class);
 
+    $app->get('/competitions', \App\Action\CompetitionsGetAction::class);
+
     //$app->post('/users', \App\Action\UserCreateAction::class);
 
     //$app->post('/getusers', \App\Action\UserGetAction::class);
+
 };
